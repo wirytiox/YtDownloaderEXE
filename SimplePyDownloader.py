@@ -67,9 +67,9 @@ def confirmarmp4():
 #############################/ConfirmarMP4/######################################################
 #############################/mainUI/######################################################
 window = Tk()                                                           #ClassDefinition
-window.title("Yotube Downloader")                                   #Titulo
-window.iconbitmap("icon.ico")                                           #icon
-lbl = Label (window, text="Youtube Downloader")                      #Label Decorativa
+window.title("Yotube Downloader")                                       #Titulo
+#window.iconbitmap("icon.ico")                                           #icon
+lbl = Label (window, text="Youtube Downloader")                         #Label Decorativa
 lbl.grid(column=0, row=0)                                               #Label Decorativa
 btnmp3 = Button (window, text="Descargar Mp3",command=confirmarmp3)     #Descargarmp3   boton
 btnmp3.grid(column=2, row=0)                                            #Descargarmp3   boton
