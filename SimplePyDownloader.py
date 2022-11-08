@@ -6,6 +6,10 @@ from pytube import YouTube
 from tkinter import filedialog
 import os
 #############################/Imports/######################################################
+#############################/defs/######################################################
+# basically makes the default folder desktop, as for now this is a windows only app.
+directorio=desktop = os.path.expanduser("~/Desktop")
+#############################/defs/######################################################
 #############################/file_explorer/######################################################
 def browseFiles():
     global directorio
@@ -15,7 +19,8 @@ def browseFiles():
 def descargar1():
     stream1.download(output_path=directorio)
     os.chdir(directorio)
-    os.rename(stream1.default_filename, stream1.default_filename + ".mp3")
+    finalName=stream1.default_filename.replace('.mp4','')
+    os.rename(stream1.default_filename,finalName + ".mp3")
     WinCon.destroy()
 #############################/descargarmp3/######################################################
 def descargar2():
@@ -50,7 +55,7 @@ def confirmarmp4():
     Rounded2 = round(stream2.filesize_approx / 1000 / 1000, 2)
     WinCon = Tk()
     WinCon.title("confirmar")
-    txt2 = Label(WinCon, width=10, text=str(Rounded2)+" Mb")
+    txt2 = Label(WinCon, width=10, text=str(Rounded2,'Mb'))
     txt2.grid(column=0, row=0)
     txt3 = Label(WinCon, text=stream2.title)
     txt3.grid(column=0, row=1)
@@ -62,8 +67,9 @@ def confirmarmp4():
 #############################/ConfirmarMP4/######################################################
 #############################/mainUI/######################################################
 window = Tk()                                                           #ClassDefinition
-window.title("Youtube downloader")                                      #Titulo
-lbl = Label (window, text="Youtube Downloader")                         #Label Decorativa
+window.title("Yotube Downloader")                                   #Titulo
+window.iconbitmap("icon.ico")                                           #icon
+lbl = Label (window, text="Youtube Downloader")                      #Label Decorativa
 lbl.grid(column=0, row=0)                                               #Label Decorativa
 btnmp3 = Button (window, text="Descargar Mp3",command=confirmarmp3)     #Descargarmp3   boton
 btnmp3.grid(column=2, row=0)                                            #Descargarmp3   boton
@@ -76,3 +82,6 @@ btn = Button(window, text="Donde descargar", command=browseFiles)       #FileExp
 btn.grid(column=2, row=2)                                               #FileExplorer boton
 window.mainloop()                                                       #Loop
 #############################/mainUI/######################################################
+#############################/notes/######################################################
+# notes
+# pyinstaller --onefile -w -F --icon="icon.ico" --add-binary "icon.ico;." "SimplePyDownloader.py"
