@@ -3,7 +3,6 @@ from tkinter import *
 from tkinter.ttk import *
 from pytube import *
 from pytube import YouTube
-from tkinter import filedialog
 import os
 #############################/Imports/######################################################
 #############################/defs/######################################################
